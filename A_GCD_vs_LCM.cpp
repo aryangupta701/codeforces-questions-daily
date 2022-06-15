@@ -32,9 +32,34 @@ string reverse(string s , ll n=-1){
    return s;
 }
 
+ll gcd(ll a, ll b){
+    if( a == 0) return b; 
+    return gcd(b%a,a);
+}
 
 void fun(){
-     
+     ll n; 
+     cin>>n; 
+    //  n -= 2; 
+    //  ll a,b; 
+    //  if(n==2){
+    //     a = 1; 
+    //     b = 1;
+    //  }
+    //  else if(n==3){
+    //     a = 2; 
+    //     b = 1;
+    //  }
+    //  else {
+    //     for(ll i=2; i<n; i++){
+    //         if(gcd(i,n-i) == 1){
+    //             a = i; 
+    //             b = n-i;
+    //             break;
+    //         }
+    //     }
+    //  }
+     cout<<n-3<<" "<<1<<" "<<1<<" "<<1; 
 }
 
 signed main() {

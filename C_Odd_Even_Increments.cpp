@@ -34,7 +34,39 @@ string reverse(string s , ll n=-1){
 
 
 void fun(){
-     
+     bool evenPos, oddPos; 
+    ll n; cin>>n; 
+    vector<ll> arr(n);
+    for(int i=0; i<n; i++) cin>>arr[i];
+    for(int i=0; i<n; i+=2){
+        if(i==0 ){
+            if(arr[i]%2==1)
+            evenPos = true;
+            else evenPos = false;
+            continue;
+        }
+        if(arr[i]%2==1 && !evenPos){
+            no return;
+        }
+        if(arr[i]%2==0 && evenPos){
+            no return;
+        }
+    }
+    for(int i=1; i<n; i+=2){
+        if(i==1 ){
+            if(arr[i]%2==1)
+            oddPos = true;
+            else oddPos = false;
+            continue;
+        }
+        if(arr[i]%2==1 && !oddPos){
+            no return;
+        }
+        if(arr[i]%2==0 && oddPos){
+            no return;
+        }
+    }
+    yes
 }
 
 signed main() {

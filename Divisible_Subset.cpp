@@ -20,21 +20,39 @@ ll power(ll x, ll y)
         y = y >> 1; if(!y) break; x = (x * x);
     } return res;
 }
-string reverse(string s , ll n=-1){
-    if(n==-1){
-        n = s.length();
-    }
-   for(int i=0; i<n/2; i++){
-      char t = s[i];
-      s[i] = s[n-i-1];
-      s[n-i-1] = t;
-   }
-   return s;
-}
 
 
 void fun(){
-     
+    ll n; cin>>n; 
+    vector<ll> v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    vector<ll> rem(n+1);
+    rem[0] = 0;
+    for(int i=1; i<=n; i++){
+        rem[i] = abs((rem[i-1] + v[i-1])%n);
+    }
+    map<ll,ll> m; 
+    for(int i=0; i<=n; i++){
+        if(m.find(rem[i]) == m.end()){
+            m[rem[i]] = -1; 
+        }
+        else {
+            if(m[rem[i]] == -1){
+                m[rem[i]] = i;
+            }
+        }
+    }
+    for(int i=0; i<=n; i++){
+        if(m.find(rem[i])!=m.end() && m[rem[i]] != -1){
+            cout<<m[rem[i]]-i<<endl; 
+            for(int j=i+1; j<=m[rem[i]]; j++){
+                cout<<j<<" ";
+            }
+            return;
+        }
+    }
+    cout<<-1;
+
 }
 
 signed main() {

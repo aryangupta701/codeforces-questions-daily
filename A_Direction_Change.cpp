@@ -34,7 +34,25 @@ string reverse(string s , ll n=-1){
 
 
 void fun(){
-     
+     ll n,m; 
+     cin>>n>>m; 
+     if(n==m){
+        cout<<(n-1)*2;
+        return;
+     }
+     if((n==1 && m>2) || (n>2 && m==1)){
+        cout<<-1; 
+        return;
+     }
+     ll ans,rem;
+     bool flag;
+    ans = (min(n,m)-1)*2;
+    rem = abs(m-n);
+    ans += 4*(rem/2);
+    if(rem%2 == 1){
+        ans += 1;
+    }
+    cout<<ans;
 }
 
 signed main() {

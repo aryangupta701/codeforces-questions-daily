@@ -20,21 +20,15 @@ ll power(ll x, ll y)
         y = y >> 1; if(!y) break; x = (x * x);
     } return res;
 }
-string reverse(string s , ll n=-1){
-    if(n==-1){
-        n = s.length();
-    }
-   for(int i=0; i<n/2; i++){
-      char t = s[i];
-      s[i] = s[n-i-1];
-      s[n-i-1] = t;
-   }
-   return s;
-}
 
 
 void fun(){
-     
+     int a,b,c,d,ans=0; 
+     cin>>a>>b>>c>>d; 
+     if(b>a) ans++; 
+     if(c>a) ans++; 
+     if(d>a) ans++; 
+     cout<<ans; 
 }
 
 signed main() {

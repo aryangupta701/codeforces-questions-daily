@@ -20,6 +20,7 @@ ll power(ll x, ll y)
         y = y >> 1; if(!y) break; x = (x * x);
     } return res;
 }
+
 string reverse(string s , ll n=-1){
     if(n==-1){
         n = s.length();
@@ -34,7 +35,27 @@ string reverse(string s , ll n=-1){
 
 
 void fun(){
-     
+     ll n,r,b,mn;
+     cin>>n>>r>>b; 
+     string ans = "";
+     mn = ceil(r/(b+1.0));
+     ll c = r%(b+1);
+    while(b--){
+        for(int i=0; i<mn && r>0; i++){
+            ans += 'R';
+            r--;
+        }
+        c--; 
+        if(c==0){
+            mn--;
+        }
+        ans += 'B';
+    }
+    while(r){
+        ans += 'R'; 
+        r--;
+    }
+    cout<<ans;
 }
 
 signed main() {
