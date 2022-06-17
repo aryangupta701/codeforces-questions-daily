@@ -39,6 +39,18 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
+     ll n; cin>>n;
+     ll sum = 0; 
+     vector<ll> v(n);
+     for(int i=0; i<n; i++){
+        cin>>v[i];
+     }
+     sort(v.begin(), v.end());
+     for(int i=0; i<n; i++){
+        v[i] -= sum ; 
+        sum += v[i];
+     }
+     if(v[n-1]>1) no else yes
      
 }
 

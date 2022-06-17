@@ -34,7 +34,26 @@ string reverse(string s , ll n=-1){
 
 
 void fun(){
-     
+    ll n; 
+    cin>>n;
+    vector<ll> a(n),b(n);
+    for(int i=0; i<n; i++) {
+        cin>>a[i];
+    }
+    for(int i=0; i<n; i++) {
+        cin>>b[i];
+    }
+    for(int i=0; i<n; i++){
+        if(a[i]<b[i]){
+            swap(a[i],b[i]);
+        }
+    }
+    ll ans=0;
+    for(int i=0; i<n-1; i++){
+        ans += abs(b[i+1]-b[i]);
+        ans += abs(a[i+1]-a[i]);
+    }
+    cout<<ans;
 }
 
 signed main() {

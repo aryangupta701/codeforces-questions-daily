@@ -39,7 +39,18 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     
+    ll x,y; 
+     cin>>x>>y;
+     if(x==0 && y==0){
+        cout<<0;
+        return;
+     } 
+     double a = sqrt(x*x + y*y);
+     if(a-floor(a) > 0){
+        cout<<2; 
+        return;
+     }
+     cout<<1;
 }
 
 signed main() {

@@ -39,7 +39,23 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     
+     ll a,b; 
+     cin>>a>>b; 
+     string ans = "";
+     while(a!=0 && b!=0){
+        ans += "01";
+        a--;
+        b--;
+     }
+     while(a!=0){
+        ans += '0';
+        a--;
+     }
+     while(b!=0){
+        ans += '1';
+        b--;
+     }
+     cout<<ans;
 }
 
 signed main() {

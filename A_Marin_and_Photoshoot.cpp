@@ -39,7 +39,16 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     
+     ll n; cin>>n; 
+     string s; cin>>s; 
+     ll count=0,ans=0,c=0;
+     for(ll i=0; i<n-1; i++){
+        if(s[i]=='0' && s[i]==s[i+1]) count++;
+        if(i<n-2 && s[i]=='0' && s[i+1]=='1' && s[i+2]=='0') c++;
+     }
+     ans = count*2 + c;
+
+     cout<<ans;
 }
 
 signed main() {

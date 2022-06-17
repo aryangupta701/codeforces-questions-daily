@@ -39,7 +39,13 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     
+     ll a,b; 
+     cin>>a>>b; 
+     if(a==0){
+        cout<<1; 
+        return ;
+     }
+     cout<<a + 2*b+1;
 }
 
 signed main() {

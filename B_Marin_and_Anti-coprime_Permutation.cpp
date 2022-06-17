@@ -12,6 +12,22 @@ typedef long double lld;
 #define vi vector<int> 
 #define vvi vector<vector<int> > 
 #define set_bits __builtin_popcountll
+bool isPrime[1000000];
+
+void calculatePrimes(ll n){
+    for(ll i=0; i<=n; i++) isPrime[i] = true;
+    isPrime[0] = false; 
+    isPrime[1] = false;
+    isPrime[2] = false;
+    for(ll i=2; i*i<=n; i++){
+        if(isPrime[i]){
+            for(ll j=i*i; j*i<=n; j+=i){
+                isPrime[i] = false;
+            }
+        }
+    }
+}
+ 
 
 ll power(ll x, ll y)
 {   ll res = 1;
@@ -37,15 +53,34 @@ ll gcd(ll a, ll b){
     return gcd(b%a,a);
 }
 
+ll fact(ll n){
+    ll mod = 998244353;
+    ll f = 1;
+    for(ll i=2; i<=n; i++){
+        f = (f*i)%mod;
+    }
+    return f;
+}
 
 void fun(){
-     
+    ll n; cin>>n; 
+    ll ones = 0;
+    if(n%2 ==1){
+        cout<<0; 
+        return;
+    }
+    ll mod = 998244353;
+    ll ans = fact(n/2); 
+    ans = (ans*ans)%mod; 
+    cout<<ans;  
+
 }
 
 signed main() {
        fastio();
        int TC = 1;
        cin>>TC;
+       calculatePrimes(1001);
        while(TC--)fun(),cout<<"\n";
        return 0;
 }
