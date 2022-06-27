@@ -36,35 +36,38 @@ ll gcd(ll a, ll b){
     if( a == 0) return b; 
     return gcd(b%a,a);
 }
+bool ans;
+ll n,m;
+bool dp[1000][1000];
 
+bool solve(vector<vector<int> >& grid, int i , int j,int curr ){
+    curr += grid[i][j];
+    if(i==n-1 && j==m-1){
+        if(curr == 0) return dp[i][j] = true;
+        return false;
+    }
+    bool x=false,y;
+    if(i<n-1){
+        x = solve(grid,i+1,j,curr);
+    }
 
+    if(j<m-1 && !x){
+        y = solve(grid,i,j+1,curr);
+    }
+    return dp[i][j] = x|y;
+}
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
+     cin>>n>>m; 
+     memset(dp,-1,sizeof(dp));
+     vector<vector<int> > grid(n,vector<int>(m));
      for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
+        for(int j=0; j<m; j++){
+            cin>>grid[i][j];
         }
      }
-     yes
-     return;
+     ans = false; 
+     if(solve(grid,0,0,0)) yes
+     else no
 }
 
 signed main() {

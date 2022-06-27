@@ -39,32 +39,23 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
+    ll n; cin>>n; 
+    vector<ll> v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    sort(v.begin(),v.end());
+    ll mxOdd = 1; 
+    ll sum=0,count=0;
+    for(int i=0; i<n;i++){ 
+        while(v[i]%2 == 0){
+            v[i]>>=1;
+            count++;
         }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
-     }
-     yes
-     return;
+        mxOdd = max(mxOdd,v[i]);
+        sum += v[i];
+    }
+
+    sum += mxOdd*(power(2,count)-1);
+    cout<<sum;
 }
 
 signed main() {

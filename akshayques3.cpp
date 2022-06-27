@@ -39,37 +39,27 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
+    int n; 
+    cin>>n; 
+    vector<pair<int,int> > v(n);
+    for(int i=0; i<n; i++){
+        cin>>v[i].second>>v[i].first ;
+    }   
+    sort(v.begin(), v.end());
+    int end = v[0].first;
+    int ans = 1;
+    for(int i=1; i<n; i++){
+        if(v[i].second>end){
+            end = v[i].first; 
         }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
-     }
-     yes
-     return;
+        else ans++;
+    }
+    cout<<ans; 
+    return ;
 }
 
-signed main() {
-       fastio();
-       int TC = 1;
+int main() {
+       int TC ;
        cin>>TC;
        while(TC--)fun(),cout<<"\n";
        return 0;

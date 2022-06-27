@@ -11,6 +11,9 @@ typedef long double lld;
 #define nline "\n"
 #define vi vector<int> 
 #define vvi vector<vector<int> > 
+#define ff first
+#define ss second
+#define ll long long
 #define set_bits __builtin_popcountll
 
 ll power(ll x, ll y)
@@ -39,32 +42,24 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
+    
+    ll n;  cin>>n; 
+    string s; cin>>s;
+    char arr[n];
+    char min = s[n-1];
+    for(int i=n-1; i>=0; i--){
+        if(s[i]<min) min = s[i];
+        arr[i] = min;
+    }
+    string ans = "";
+    string left = "";
+    for(int i=0; i<n; i++){
+        if(arr[i]<s[i]) left+=s[i];
+        else ans += s[i];
+    }
+    for(int i=left.size()-1; i>=0; i--) ans+=left[i];
+    cout<<ans;
 
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
-     }
-     yes
-     return;
 }
 
 signed main() {

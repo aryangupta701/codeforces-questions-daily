@@ -39,32 +39,28 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
+     ll n; cin>>n; 
+     ll ans = 0,x=n%10, y = n/10; 
+     if(n<10){
+        if(n<=6) ans = 15; 
+        else if(n<=8) ans = 20; 
+        else ans = 25;
+        cout<<ans; 
+        return;
      }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
-     }
-     yes
-     return;
+     switch(x){
+        case 0 : ans = 25*y; break;
+        case 1 : ans = 25*(y-1) + 30; break;
+        case 2 : ans = 25*(y-1) + 30; break;
+        case 3 : ans = 25*(y-1) + 35; break;
+        case 4 : ans = 25*(y-1) + 35; break;
+        case 5 : ans = 25*(y-1) + 40; break;
+        case 6 : ans = 25*(y-1) + 40; break;
+        case 7 : ans = 25*(y-1) + 45; break;
+        case 8 : ans = 25*(y-1) + 45; break;
+        default : ans = 25*(y+1);
+    }
+     cout<<ans;
 }
 
 signed main() {

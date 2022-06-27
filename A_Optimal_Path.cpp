@@ -39,32 +39,12 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
-     }
-     yes
-     return;
+    ll n,m; cin>>n>>m; 
+    // vector<vector<ll>> v(n,vector<ll>(m));
+    // for(ll i=0; i<n; i++) for(ll j=0; j<m; j++) cin>>v[i][j];
+    ll ans = (m*(m+1))/2;
+    ans += (m*n*(n+1))/2 - m;
+    cout<<ans;
 }
 
 signed main() {

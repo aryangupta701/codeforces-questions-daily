@@ -39,32 +39,30 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
+     ll n,m; 
+     cin>>n>>m; 
+     vector<vector<ll> > mat(n,vector<ll>(m));
+     for(int i=0; i<n; i++) {
+        for(int j=0; j<m ;j++) 
+        cin>>mat[i][j];
      }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
+      ll a=0,b=0,mx=mat[0][0]; 
+     for(ll i=0; i<n; i++){
+        for(ll j=0; j<m; j++){
+            if(mx<mat[i][j]){
+                mx = mat[i][j];
+                a = i; 
+                b = j;
             }
         }
      }
-     yes
-     return;
+     a++; 
+     b++; 
+     ll x ,y; 
+     x = max(n-a+1,a);
+     y = max(m-b+1,b);
+     cout<<x*y;
+     
 }
 
 signed main() {

@@ -37,34 +37,29 @@ ll gcd(ll a, ll b){
     return gcd(b%a,a);
 }
 
+ll calc(ll x, ll a){
+    ll ans = floor(x/a) + x%a; 
+    return ans;
+}
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
+     ll l,r,a; 
+     cin>>l>>r>>a; 
+     ll ans;
+     ans = calc(r,a);
+     ans = max(ans,calc(l,a));
+     if(r%a == 0){
+        if(r-1>=l)
+        ans = max(ans,calc(r-1,a));
+        cout<<ans;
+        return;
      }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
+     ll x = r - r%a -1 ; 
+     if(x>=l){
+        ans = max(ans,calc(x,a));
      }
-     yes
-     return;
+     cout<<ans;
+
 }
 
 signed main() {

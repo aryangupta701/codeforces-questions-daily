@@ -39,32 +39,23 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
+    ll n,k; cin>>n>>k; 
+    vector<ll> v(n);
+    map<ll,ll> mp;
+    for(ll i=0; i<n; i++) {
+        cin>>v[i]; 
+        mp[v[i]]++;
+    }
+    for(auto it : v){
+        ll req = k+it;
+        if(req == it && mp[it]>1){
+            yes return ;
         }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
+        else if(mp.find(req) != mp.end()){
+            yes return;
         }
-     }
-     yes
-     return;
+    }
+    no return;
 }
 
 signed main() {

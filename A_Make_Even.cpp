@@ -20,17 +20,17 @@ ll power(ll x, ll y)
         y = y >> 1; if(!y) break; x = (x * x);
     } return res;
 }
-string reverse(string s , ll n=-1){
-    if(n==-1){
-        n = s.length();
-    }
-   for(int i=0; i<n/2; i++){
-      char t = s[i];
-      s[i] = s[n-i-1];
-      s[n-i-1] = t;
-   }
-   return s;
-}
+// string reverse(string s , ll n=-1){
+//     if(n==-1){
+//         n = s.length();
+//     }
+//    for(int i=0; i<n/2; i++){
+//       char t = s[i];
+//       s[i] = s[n-i-1];
+//       s[n-i-1] = t;
+//    }
+//    return s;
+// }
 
 ll gcd(ll a, ll b){
     if( a == 0) return b; 
@@ -39,32 +39,32 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
+     ll n; cin>>n; 
+     if(n%2==0){
+        cout<<0; 
+        return;
      }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
+     vector<int> v;
+     while(n){
+        v.push_back(n%10);
+        n /= 10; 
+     }
+     reverse(v.begin(),v.end());
+     for(int i=0; i<v.size(); i++){
+        if(v[i]%2 == 0){
+            break;
         }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
+        if(i==v.size()-1){
+            cout<<-1; 
+            return;
         }
      }
-     yes
+     if(v[0]%2 == 0){
+        cout<<1;
+     }
+     else cout<<2; 
      return;
+
 }
 
 signed main() {

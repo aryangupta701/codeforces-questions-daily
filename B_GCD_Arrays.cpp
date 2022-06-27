@@ -39,32 +39,23 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
+    ll l,r,k; cin>>l>>r>>k; 
+    ll n = r-l+1;
+    ll oddNums = n/2;
+    if(n%2 == 1 && l%2==1){
+        oddNums++;
+    }
+    if(l==1 && r==1){
+        no return;
+    }
+    if(l==r){
+        yes return;
+    }
 
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
-     }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
-        }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
-        }
-     }
-     yes
-     return;
+    if(k>=(oddNums)){
+        yes
+    }
+    else no
 }
 
 signed main() {

@@ -39,32 +39,49 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll count = 0,count2=0,n; 
-     cin>>n; 
-     vector<ll> v(n);
-
-     for(int i=0;i<n;i++){
-        cin>>v[i];
-     } 
-
-     for(int i=0; i<n; i++){
-        if(v[i] == 1) count++;
-        if(v[i] == 2) count2++;
+    ll x1,p1,x2,p2; cin>>x1>>p1>>x2>>p2; 
+    ll n1=0,n2=0; 
+    ll temp1 = x1,temp2 = x2;
+    while(x1){
+        x1 /= 10; 
+        n1++;
+    }
+    while(x2){
+        n2++; 
+        x2 /= 10;
      }
-
-     if(count>0 && count<n){
-        if(count2>0) {
-            no return;
+    if(n1>n2){
+        if(p2>=(n1-n2)){
+            p2 -= (n1-n2);
+            temp2 *= power(10,n1-n2);
         }
-        sort(v.begin(),v.end());
-        for(int i=0; i<n; i++){
-            if((v[i-1]+1) == v[i]){
-                no return;
-            }
+        else {
+            cout<<">"; return;
         }
-     }
-     yes
-     return;
+    }
+    if(n2>n1){
+        if(p1>=(n2-n1)){
+            p1 -= (n2-n1);
+            temp1 *= power(10,n2-n1);
+        }
+        else {
+            cout<<"<"; return;
+        }
+    }
+    if(p1>p2){
+        cout<<">";
+    }
+    else if(p2>p1){
+        cout<<"<";
+    }
+    else if(temp1>temp2){
+        cout<<">";
+    }
+    else if(temp1<temp2){
+        cout<<"<";
+    }
+    else cout<<"=";
+    return;
 }
 
 signed main() {
