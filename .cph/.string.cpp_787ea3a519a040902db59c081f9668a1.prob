@@ -1,0 +1,1 @@
+{"name":"Local: string","url":"c:\\Users\\garya\\OneDrive\\Documents\\coding codeforces\\string.cpp","tests":[{"id":1656514346737,"input":"abcdefg","output":"bacdfeg"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\garya\\OneDrive\\Documents\\coding codeforces\\string.cpp","group":"local","local":true}
