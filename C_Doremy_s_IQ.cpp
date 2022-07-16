@@ -37,24 +37,40 @@ ll gcd(ll a, ll b){
     return gcd(b%a,a);
 }
 
+int dp[1000][1000];
+string solve(vector<ll>&v , ll j, ll q){
+    if(q<0) return "0";
+    if(j==-1){
+        return "";
+    }
+    string s="",t;
+    if(q<v[j]){
+        s = solve(v,j-1,q);
+    }
+    if(q<v[j]) q--;
+    t = solve(v,j-1,q);
+    ll a=0,b=0; 
+    for(ll i=0; i<s.length(); i++){
+        if(s[i] == '1'){
+            a++;
+        }
+        if(t[i] == '1'){
+            b++;
+        }
+    }
+    if(a>b){
+        return "0"+s;
+    }
+    else "1"+t;
+}
 
 void fun(){
-     ll n; 
-     cin>>n;
-     ll ans = 0;
-     vector<string> v(n);
-     for(ll i=0; i<n; i++){
-       cin>>v[i];
-     } 
+     ll n,q; 
+     cin>>n>>q; 
+     vector<ll> v(n);
+     for(ll i=0; i<n; i++) cin>>v[i];
+     cout<<solve(v,n-1,q);
 
-     for(ll i=0; i<n; i++){
-        for(ll j=0; j<n; j++){
-            ll x = (v[i][j] == '1') + (v[j][n-i-1] == '1') + (v[n-i-1][n-j-1] == '1') + (v[n-j-1][i] == '1');
-            // cout<<x;
-            ans += min(x,4-x);
-        }
-     }
-     cout<<ans/4;
 }
 
 signed main() {

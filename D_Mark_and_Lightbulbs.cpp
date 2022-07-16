@@ -39,22 +39,50 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll n; 
-     cin>>n;
+     ll n; string s,t; cin>>n; cin>>s>>t; 
+     if(s[n-1] != t[n-1] || s[0] != t[0]){
+        cout<<-1; 
+        return;
+     }
      ll ans = 0;
-     vector<string> v(n);
+     vector<pair<char,ll>> sb,tb; 
+     sb.push_back({'/',0});
+     tb.push_back({'/',0});
      for(ll i=0; i<n; i++){
-       cin>>v[i];
-     } 
-
-     for(ll i=0; i<n; i++){
-        for(ll j=0; j<n; j++){
-            ll x = (v[i][j] == '1') + (v[j][n-i-1] == '1') + (v[n-i-1][n-j-1] == '1') + (v[n-j-1][i] == '1');
-            // cout<<x;
-            ans += min(x,4-x);
+        if(sb.back().first == s[i]){
+            sb.back().second++;
+        }
+        else sb.push_back({s[i],1});
+        if(tb.back().first == t[i]){
+            tb.back().second++;
+        }
+        else tb.push_back({t[i],1});
+     }
+     if(sb.size() != tb.size()) {
+        cout<<-1;
+        return ;
+     }
+     ll len = sb.size();
+     for(int i=0; i<len; i++){
+        if(sb[i].first != tb[i].first){
+            cout<<-1;
+            return;
         }
      }
-     cout<<ans/4;
+     for(ll i=1; i<len-1; i++){
+        // if(i == len){
+        //     if(sb[i].second != tb[i].second){
+        //         cout<<-1; 
+        //         return;
+        //     }
+        // }
+        ll x = sb[i].second - tb[i].second;
+        ans += abs(x);
+        sb[i].second = tb[i].second;
+        sb[i+1].second += x;
+     }
+     cout<<ans;
+
 }
 
 signed main() {

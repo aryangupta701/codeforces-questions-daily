@@ -36,25 +36,50 @@ ll gcd(ll a, ll b){
     if( a == 0) return b; 
     return gcd(b%a,a);
 }
+class Node{
+    public: 
+    ll white,black; 
+    Node(){
+        white = 0; 
+        black = 0;
+    }
+    Node(ll n, ll m){
+        white = n; 
+        black = m;
+    }
+};
+string s; 
+ll ans = 0;
 
-
+Node solve(ll sv,vector<vector<ll>>& adj){
+    Node curr;
+    for(auto it: adj[sv]){
+        Node temp = solve(it,adj);
+        if(temp.white == temp.black) ans++;
+        curr.white += temp.white; 
+        curr.black += temp.black;
+    }
+    if(s[sv-1] == 'W'){
+        curr.white++;
+    }
+    else curr.black++;
+    return curr;
+}
 void fun(){
-     ll n; 
-     cin>>n;
-     ll ans = 0;
-     vector<string> v(n);
-     for(ll i=0; i<n; i++){
-       cin>>v[i];
-     } 
-
-     for(ll i=0; i<n; i++){
-        for(ll j=0; j<n; j++){
-            ll x = (v[i][j] == '1') + (v[j][n-i-1] == '1') + (v[n-i-1][n-j-1] == '1') + (v[n-j-1][i] == '1');
-            // cout<<x;
-            ans += min(x,4-x);
-        }
+     ll n; cin>>n; 
+     vector<vector<ll>> adj(n+1);
+     ll root = 1; 
+     for(ll i=0; i<n-1; i++){
+        ll x;
+        cin>>x; 
+        adj[x].push_back(i+2);
      }
-     cout<<ans/4;
+     cin>>s; 
+     ans = 0;
+     Node t = solve(root,adj);
+     if(t.white == t.black) ans++;
+     cout<<ans;
+     
 }
 
 signed main() {

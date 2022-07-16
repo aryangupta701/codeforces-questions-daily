@@ -39,22 +39,12 @@ ll gcd(ll a, ll b){
 
 
 void fun(){
-     ll n; 
-     cin>>n;
-     ll ans = 0;
-     vector<string> v(n);
-     for(ll i=0; i<n; i++){
-       cin>>v[i];
-     } 
-
-     for(ll i=0; i<n; i++){
-        for(ll j=0; j<n; j++){
-            ll x = (v[i][j] == '1') + (v[j][n-i-1] == '1') + (v[n-i-1][n-j-1] == '1') + (v[n-j-1][i] == '1');
-            // cout<<x;
-            ans += min(x,4-x);
-        }
-     }
-     cout<<ans/4;
+    ll x,y; 
+    cin>>x>>y; 
+    if(x>=y){
+        yes
+    }
+    else no
 }
 
 signed main() {

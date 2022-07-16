@@ -37,24 +37,35 @@ ll gcd(ll a, ll b){
     return gcd(b%a,a);
 }
 
+ll find(ll i , ll l ,ll r){
+    ll gap = l%i;
+    if(gap == 0) return l;
+    ll x = l+(i-gap);
+    if(x >= l && x<=r){
+        return x; 
+    }
+    return -1;
+}
 
 void fun(){
-     ll n; 
-     cin>>n;
-     ll ans = 0;
-     vector<string> v(n);
+     ll n; cin>>n; 
+     ll l,r; cin>>l>>r; 
+     vector<ll> v(n);
+     if(n == 1){
+        yes cout<<endl; 
+        cout<<l; return;
+     }
      for(ll i=0; i<n; i++){
-       cin>>v[i];
-     } 
-
-     for(ll i=0; i<n; i++){
-        for(ll j=0; j<n; j++){
-            ll x = (v[i][j] == '1') + (v[j][n-i-1] == '1') + (v[n-i-1][n-j-1] == '1') + (v[n-j-1][i] == '1');
-            // cout<<x;
-            ans += min(x,4-x);
+        v[i] = find(i+1,l,r);
+        if(v[i] == -1){
+            // cout<<i+1;
+            no return;
         }
      }
-     cout<<ans/4;
+     yes cout<<endl; 
+     for(ll i=0; i<n; i++){
+        cout<<v[i]<<" ";
+     }
 }
 
 signed main() {
