@@ -37,40 +37,49 @@ ll gcd(ll a, ll b){
     return gcd(b%a,a);
 }
 
-int dp[1000][1000];
-string solve(vector<ll>&v , ll j, ll q){
-    if(q<0) return "0";
-    if(j==-1){
-        return "";
-    }
-    string s="",t;
-    if(q<v[j]){
-        s = solve(v,j-1,q);
-    }
-    if(q<v[j]) q--;
-    t = solve(v,j-1,q);
-    ll a=0,b=0; 
-    for(ll i=0; i<s.length(); i++){
-        if(s[i] == '1'){
-            a++;
-        }
-        if(t[i] == '1'){
-            b++;
-        }
-    }
-    if(a>b){
-        return "0"+s;
-    }
-    else "1"+t;
-}
-
 void fun(){
      ll n,q; 
      cin>>n>>q; 
-     vector<ll> v(n);
-     for(ll i=0; i<n; i++) cin>>v[i];
-     cout<<solve(v,n-1,q);
-
+     vector<ll> v(n),bad;
+     for(ll i=0; i<n; i++) {
+        cin>>v[i];
+        if(v[i]>q){
+            bad.push_back(i);
+        }
+    }
+    ll low = 0 , high = (int) bad.size()-1;
+    // cout<<high;
+    ll ans = n; 
+    while(low<=high){
+        ll mid = low + (high-low)/2;
+        bool flag = true;
+        ll iq = q; 
+        // cout<<bad[mid];
+        for(ll i=bad[mid]; i<n; i++){
+            if(iq == 0){
+                flag = false;
+                break;
+            }
+            if(v[i]>iq){
+                iq--;
+            }
+        }
+        if(flag){
+            ans = bad[mid]; 
+            high = mid-1; 
+        }
+        else low = mid+1;
+    }
+    // cout<<ans;
+    for(ll i=0; i<ans; i++){
+        if(v[i]<=q){
+            cout<<"1";
+        }
+        else cout<<"0";
+    }
+    for(ll i=ans; i<n; i++){
+        cout<<"1";
+    }
 }
 
 signed main() {
